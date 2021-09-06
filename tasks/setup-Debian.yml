@@ -2,6 +2,10 @@
 - name: Update apt cache.
   apt: update_cache=yes cache_valid_time=86400
 
+- name: Add ppa Repository
+  become: yes
+  apt_repository: repo=ppa:ondrej/php
+
 - name: Ensure PHP packages are installed.
   apt:
     name: "{{ php_packages + php_packages_extra }}"
